@@ -59,25 +59,29 @@ public class HelloFunction {
 
         System.out.println("About to try and upload!");
         String charset = "UTF-8";
-        File uploadFile1 = new File("input");
+        File uploadFile1 = new File(input);
         String requestURL = "https://g4bd449b5f2d9a3-adbrag.adb.uk-london-1.oraclecloudapps.com/ords/admin/api/insertdoc?file_name=fnfile.pdf&file_size=100&file_type=PDF";
  
         try {
             System.out.println("We are in the try!");
             MultipartUtility multipart = new MultipartUtility(requestURL, charset);
+            System.out.println("1");
              
             multipart.addHeaderField("User-Agent", "CodeJava");
             multipart.addHeaderField("Test-Header", "Header-Value");
-             
+            System.out.println("2");
             multipart.addFilePart("fileUpload", uploadFile1);
+            System.out.println("3");
  
             List<String> response = multipart.finish();
+            System.out.println("4");
              
             System.out.println("SERVER REPLIED:");
              
             for (String line : response) {
                 System.out.println(line);
             }
+            System.out.println("5");
         } catch (IOException ex) {
             System.err.println(ex);
         }
