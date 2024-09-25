@@ -181,6 +181,7 @@ public class HelloFunction {
         String requestURL = "https://g4bd449b5f2d9a3-adbrag.adb.uk-london-1.oraclecloudapps.com/ords/admin/api/insertdoc?file_name=fnfile.pdf&file_size=100&file_type=PDF";
  
         try {
+            System.out.println("We are in the try!");
             MultipartUtility multipart = new MultipartUtility(requestURL, charset);
              
             multipart.addHeaderField("User-Agent", "CodeJava");
