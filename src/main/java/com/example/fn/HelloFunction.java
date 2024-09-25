@@ -20,6 +20,8 @@ import java.io.FileOutputStream;
 public class HelloFunction {
 
     public String handleRequest(String input) {
+        input = "XYZPolicies.pdf";
+        System.out.println(input);
         //ObjectMapper objectMapper = new ObjectMapper();
         //Map data = objectMapper.convertValue(event.getData().get(), Map.class);
         //Map additionalDetails = objectMapper.convertValue(data.get("additionalDetails"), Map.class);
@@ -66,9 +68,6 @@ public class HelloFunction {
              
             multipart.addHeaderField("User-Agent", "CodeJava");
             multipart.addHeaderField("Test-Header", "Header-Value");
-             
-            multipart.addFormField("description", "Cool Pictures");
-            multipart.addFormField("keywords", "Java,upload,Spring");
              
             multipart.addFilePart("fileUpload", uploadFile1);
  
