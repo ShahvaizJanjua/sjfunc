@@ -50,7 +50,8 @@ public class HelloFunction {
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
             }
         } catch (IOException e) {
-            return e.println();
+            System.out.println("Up shits creek");
+            //return e.println();
         }
         System.out.println("Obj downloaded");
 
