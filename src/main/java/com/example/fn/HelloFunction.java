@@ -20,7 +20,7 @@ public class HelloFunction {
             } catch (IOException e) {
              // handle exception
         }*/
-        System.out.println("Ready to D/L Object");
+        System.out.println("Ready to D/L Object from OSS");
         InputStream in = new URL(objectURL).openStream();
         Files.copy(in, Paths.get(input), StandardCopyOption.REPLACE_EXISTING);
         System.out.println("Obj downloaded");
