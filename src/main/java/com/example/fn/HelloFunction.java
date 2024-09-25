@@ -1,24 +1,26 @@
 package com.example.fn;
 
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 
 
 public class HelloFunction {
 
     public String handleRequest(String input) {
-        ObjectMapper objectMapper = new ObjectMapper();
+        //ObjectMapper objectMapper = new ObjectMapper();
         //Map data = objectMapper.convertValue(event.getData().get(), Map.class);
         //Map additionalDetails = objectMapper.convertValue(data.get("additionalDetails"), Map.class);
         System.out.println("Building ObjectURL, OBJ Name: "+input);
@@ -40,8 +42,8 @@ public class HelloFunction {
         InputStream in = new URL(objectURL).openStream();
         Files.copy(in, Paths.get(input), StandardCopyOption.REPLACE_EXISTING);
         */
-        try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
-            FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
+        try (BufferedInputStream in = new BufferedInputStream(new URL(objectURL).openStream());
+            FileOutputStream fileOutputStream = new FileOutputStream(input)) {
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
