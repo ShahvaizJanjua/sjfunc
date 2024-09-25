@@ -6,7 +6,7 @@ public class HelloFunction {
         ObjectMapper objectMapper = new ObjectMapper();
         //Map data = objectMapper.convertValue(event.getData().get(), Map.class);
         //Map additionalDetails = objectMapper.convertValue(data.get("additionalDetails"), Map.class);
-
+        System.out.println("Building ObjectURL, OBJ Name: "+input);
         String objectURL = "https://frofufwuvghu.objectstorage.uk-london-1.oci.customer-oci.com/p/w7dj07NLfA0cJcKaIGl7oJwLiZaZmjkOzjaFDLeDfQKzauu9muot5HqVj_NXLYd0/n/frofufwuvghu/b/SJBucket/o/"
         +input;
 
@@ -20,9 +20,10 @@ public class HelloFunction {
             } catch (IOException e) {
              // handle exception
         }*/
+        System.out.println("Ready to D/L Object");
         InputStream in = new URL(objectURL).openStream();
         Files.copy(in, Paths.get(input), StandardCopyOption.REPLACE_EXISTING);
-
+        System.out.println("Obj downloaded");
     }
 
 }
