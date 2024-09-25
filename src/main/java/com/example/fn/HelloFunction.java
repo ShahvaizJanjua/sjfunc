@@ -45,7 +45,7 @@ public class HelloFunction {
         Files.copy(in, Paths.get(input), StandardCopyOption.REPLACE_EXISTING);
         */
         try (BufferedInputStream in = new BufferedInputStream(new URL(objectURL).openStream());
-            FileOutputStream fileOutputStream = new FileOutputStream(input)) {
+            FileOutputStream fileOutputStream = new FileOutputStream("/tmp/"+input)) {
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
@@ -56,10 +56,12 @@ public class HelloFunction {
             //return e.println();
         }
         System.out.println("Obj downloaded");
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+
 
         System.out.println("About to try and upload!");
         String charset = "UTF-8";
-        File uploadFile1 = new File(input);
+        File uploadFile1 = new File("/tmp/"+input);
         String requestURL = "https://g4bd449b5f2d9a3-adbrag.adb.uk-london-1.oraclecloudapps.com/ords/admin/api/insertdoc?file_name=fnfile.pdf&file_size=100&file_type=PDF";
  
         try {
