@@ -10,6 +10,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.BufferedReader;
  
 /**
  * This utility class provides an abstraction layer for sending multipart HTTP

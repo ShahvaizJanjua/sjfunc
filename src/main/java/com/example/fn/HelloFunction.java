@@ -1,6 +1,19 @@
 package com.example.fn;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.BufferedReader;
+
 
 public class HelloFunction {
 
@@ -23,8 +36,20 @@ public class HelloFunction {
              // handle exception
         }*/
         System.out.println("Ready to D/L Object from OSS");
+        /*
         InputStream in = new URL(objectURL).openStream();
         Files.copy(in, Paths.get(input), StandardCopyOption.REPLACE_EXISTING);
+        */
+        try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
+            FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
+            byte dataBuffer[] = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
+                fileOutputStream.write(dataBuffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            return e.println();
+        }
         System.out.println("Obj downloaded");
 
         System.out.println("About to try and upload!");
