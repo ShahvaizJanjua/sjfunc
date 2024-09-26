@@ -58,10 +58,23 @@ public class HelloFunction {
         System.out.println("Obj downloaded");
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
 
+        File folder = new File("/tmp");
+        File[] listOfFiles = folder.listFiles();
+        if(listOfFiles != null) {
+            for (int i = 0; i < listOfFiles.length; i++) {
+                if (listOfFiles[i].isFile()) {
+                    System.out.println("File " + listOfFiles[i].getName());
+                } else if (listOfFiles[i].isDirectory()) {
+                    System.out.println("Directory " + listOfFiles[i].getName());
+                }
+            }
+        }
+
 
         System.out.println("About to try and upload!");
         String charset = "UTF-8";
         File uploadFile1 = new File("/tmp/"+input);
+        System.out.println("Does the file exist? :"uploadFile1.exist());
         String requestURL = "https://g4bd449b5f2d9a3-adbrag.adb.uk-london-1.oraclecloudapps.com/ords/admin/api/insertdoc?file_name=fnfile.pdf&file_size=100&file_type=PDF";
  
         try {
